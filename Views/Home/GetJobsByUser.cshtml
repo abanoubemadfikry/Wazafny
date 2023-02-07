@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Job_Offers_Website.Models.ApplyForJob>
+
+
+@{
+    ViewBag.Title = "GetJobsByUser";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+ <h4 class="alert alert-dark" style="width:500px;height:60px;" >جميع الوظائف التي تم التقدم اليها</h4>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Job.JobTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User.UserType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplyDate)
+            </th>
+            <th>@Html.DisplayNameFor(model => model.Job.JobImage)</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job.JobTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApplyDate)
+                </td>
+                <td>
+                    <img src="~/Uploads/@Html.DisplayFor(modelItem=>item.Job.JobImage)" alt="photo"
+                         class="img-thumbnail"
+                         style="width:150px;height:100px" />
+                </td>
+                <td>
+                    @Html.ActionLink("تعديل الوظيفه", "Editthejob", new { id = item.Id }) |
+                    @Html.ActionLink("مزيد من التفاصيل", "Detailsofjob", new { id = item.Id }) |
+                    @Html.ActionLink("حذف الوظيفه", "Deletethejob", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>

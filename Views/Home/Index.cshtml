@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Job_Offers_Website.Models.Category>
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="row">
+
+    @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+    {
+        <div class="col-md-12">
+            <input name="searchname" id="searchname" class="form-control mr-sm-2"
+                   type="text" placeholder="Search Here.." aria-label="Search" style="margin-left: 1000px;">
+            <button type="submit" value="Search" class="btn btn-outline-success col-lg-1"
+                    style="margin-top: 3px;margin-bottom:5px; margin-left: 1020px;">
+                search
+            </button>
+        </div>
+        @*<button class="btn btn-outline-success" type="submit"
+                    style="margin-top: 400px; margin-left: 1020px; width: 100px; height: 40px;">
+                Search
+            </button>*@
+
+    }
+
+</div>
+    
+<div class="jumbotron accordion-item">
+    <div class="alert alert-success">
+        <h3 class="alert">ًWELCOME TO OUR WEBSITE</h3>
+        <b class=" alert"  style="width: 550px; height: 50px">
+        YOU CAN FIND ANY JOBS YOU WANT ,YOU CAN POST JOBS HERE TO GET HIRING</b>
+    </div>
+    
+    <p>
+        <a href="@Url.Action("Index","Jobs")" class="btn btn-primary btn-lg">Viwe And Add Jobs &raquo;</a>
+        <a href="@Url.Action("Index","Roles")" class="btn btn-primary btn-lg">MANAGE ROLES</a>
+        <a href="@Url.Action("GetJobsbyUser","Home")" class="btn btn-primary btn-lg">All Your Jobs you Apply For</a>
+        <a href="@Url.Action("GetJobsbyPublisher","Home")" class="btn btn-primary btn-lg">All Jobs By PUBLISHER</a>
+    </p>
+    @*@Html.ActionLink("ROLES", "Index", "Roles", htmlAttributes: new { @class = "btn btn-info" })*@
+   
+</div>
+@*@Html.Action("Index", "Categories")*@
+
+@foreach (var item in Model)
+{
+    <hr class="flex-shrink-0" />
+
+    <div class="alert alert-info">
+        <h3>@Html.DisplayFor(i => item.CategoryName)</h3>
+        <h5>@Html.DisplayFor(i => item.CategoryDescription)</h5>
+    </div>
+   
+
+    <div class="row">
+        @foreach (var subitem in item.Jobs)
+        {
+        <div class="col-md-3 img-thumbnail" style="margin-left:20px;margin-bottom:30px; height:250px;width:250px;">
+            <img src="~/Uploads/@subitem.JobImage" alt="Alternate Text" class="img-thumbnail" style="height:100px;width:100px;" />
+            <h5>@Html.DisplayFor(m => subitem.JobTitle)</h5>
+            <p>@Html.DisplayFor(m => subitem.JobContent)</p>
+           @Html.ActionLink("DETAILS","Details","Home",new { jobid=subitem.Id}, htmlAttributes: new { @class = "btn btn-outline-primary",@style = "height:35px;width:80px;" })
+        </div>
+        }
+    </div>
+}

@@ -1,0 +1,57 @@
+﻿@model Job_Offers_Website.Models.ApplyForJob
+
+@{
+    ViewBag.Title = "Detailsofjob";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Detailsofjob</h2>
+
+<div>
+    <h4>ApplyForJob</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Job.JobTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Job.JobTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.UserType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.UserType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApplyDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplyDate)
+        </dd>
+        <dt>@Html.DisplayNameFor(model=>model.Job.JobImage)</dt>
+        <dd>
+    <img src="~/Uploads/@Html.DisplayFor(model=>model.Job.JobImage)" alt="photo"
+         class="img-thumbnail"
+         style="width:150px;height:100px" />
+    </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit this job", "Editthejob", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "getjobsbyuser")
+</p>

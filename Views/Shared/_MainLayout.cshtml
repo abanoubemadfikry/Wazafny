@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Page.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <style>
+    </style>
+</head>
+
+<body>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-brand" style="height:80px;padding:5px;">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar  navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Home/UserInfo"><strong style="color: antiquewhite ">Profile</strong><img src="https://img.icons8.com/wired/35/000000/circled-user.png" /></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Home/Index"><strong style="color: antiquewhite">Home</strong><img src="https://img.icons8.com/wired/30/000000/home-page.png" /></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Categories/Index"> <strong style="color: antiquewhite">Categories</strong> <img src="https://img.icons8.com/wired/30/000000/categorize.png" /></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href=""><strong style="color: antiquewhite">About Us</strong> <img src="https://img.icons8.com/wired/30/000000/info.png" /></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="~/Home/Contact"><strong style="color:antiquewhite">Contact Us</strong> <img src="https://img.icons8.com/external-itim2101-lineal-itim2101/30/null/external-contact-us-contact-and-message-itim2101-lineal-itim2101-1.png" /></a>
+                </li>
+                @*<li>
+                        <a href="#">
+                            <input type="text"  name="searchname" placeholder="search here.."/>
+                        </a>
+
+                    </li>*@
+            </ul>
+
+
+            <!--Partial login-->
+            @Html.Partial("_login")
+        </div>
+    </nav>
+
+
+    @*<div>@using (Html.BeginForm("Search", "Home", FormMethod.Post))
+            {
+                <input name="searchname" id="searchname" class="form-control mr-sm-2"
+                       type="text" placeholder="Search Here.." aria-label="Search" style="margin-left: 1000px;">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"
+                        style="margin-left: 1000px;">
+                    Search
+                </button>
+
+            }
+
+
+
+        </div>*@
+    <div class="container">
+        <div class="row" style="margin-bottom:150px">
+            @RenderBody()
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer class="myfooter navbar fixed-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 aboutus">
+                    <h3><img src="https://img.icons8.com/wired/40/000000/information.png" /> Who Are We?</h3>
+                    <p>
+                        Constant Contact has some great features, including a video and fairly in-depth history of their company.
+                        It can all be explained in one simple sentence, which serves as the header for their page: “The tools. The people.
+                        The drive to help small business do more business.” They are very clearly customer-focused, which is a big win for their page.
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h3> <img src="https://img.icons8.com/wired/40/000000/link--v1.png" />Important Links</h3>
+                    <ul>
+                        <li> <a href="#">وظائف للقطاع العام</a></li>
+                        <li> <a href="#">وظائف للقطاع الخاص</a></li>
+                        <li> <a href="#">وظائف خارج البلاد</a></li>
+                        <li> <a href="#">وظائف متنوعه</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h3><img src="https://img.icons8.com/wired/40/000000/phone-disconnected.png" /> Contact With Us</h3>
+
+                    <pre> <a href="Https://facebook.com" target="_blank"><img src="https://img.icons8.com/wired/30/000000/facebook-new.png" /></a> <a href="Https://linkedin.com" target="_blank"><img src="https://img.icons8.com/wired/30/000000/linkedin--v1.png" /></a> <a href="Https://twitter.com" target="_blank"><img src="https://img.icons8.com/wired/30/000000/twitter-circled.png" /></a> <a href="Https://youtube.com" target="_blank"><img src="https://img.icons8.com/wired/30/000000/youtube--v1.png" /></a><a href="#"><img src="https://img.icons8.com/wired/30/000000/chat.png" /></a> </pre>
+                </div>
+            </div>
+        </div>
+        <div class="subFooter justify-content-center">
+            <p>All Rights Reserved 2022</p>
+        </div>
+    </footer>
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

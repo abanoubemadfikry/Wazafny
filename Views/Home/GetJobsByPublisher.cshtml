@@ -1,0 +1,38 @@
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<Job_Offers_Website.Models.JobsViewModel>
+
+<p class="alert alert-secondary"><strong>@User.Identity.GetUserName() </strong> who is publisher of this job </p>
+
+
+@foreach (var gr in Model)
+{
+    <h5 class="card-header">@gr.Jobtitle</h5>
+    <table class="table table-bordered d-print-table-cell table-striped table-active table-responsive-xxl
+           tab-content">
+        <tr>
+            <th>
+                اسم المتقدم الي الوظيفه
+            </th>
+            <th>  نص الرساله التي ارسلها المتقدم </th>
+            <th>  تاريخ التقدم الي الوظيفة </th>
+            <th> photo of job  </th>
+        </tr>
+        @foreach (var item in gr.Items)
+        {
+            <tr>
+                <td>
+                    @item.User.UserName
+                </td>
+                <td>@item.Message</td>
+                <td>@item.ApplyDate</td>
+                <td>
+                    <img src="~/Uploads/@item.Job.JobImage"
+                         style="height:100px;width:100px" class="card-img-top"
+                         alt="Alternate Text" />
+                </td>
+
+            </tr>
+
+        }
+    </table>
+}
