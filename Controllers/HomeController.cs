@@ -29,14 +29,7 @@ namespace WebApplication2.Controllers
             var userid = User.Identity.GetUserId();
             var jobs = _context.ApplyForJobs.Where(a => a.UserId == userid);
             return View(jobs.ToList());
-            //if (jobs == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //else
-            //{
-            //    return View(jobs);
-            //}
+          
 
         }
         [Authorize]
@@ -78,7 +71,7 @@ namespace WebApplication2.Controllers
             }
             else
             {
-                ViewBag.Result2 = "sorry you are aliready applied for this job";
+                ViewBag.Result2 = "sorry you are already applied for this job";
             }
 
             return View();
